@@ -16,13 +16,20 @@
 
 int main(void)
 {
+	robot_pos.x_tile = 14;
+	robot_pos.y_tile = 14;
+	robot_pos.angle = 0;
+	
 	Main_array_init(Find_y_end_position(), Find_x_end_position());
 	Pathfinder();
 	nearest_path_to_array();
-	drive_nearest_path();
-	drive_back_nearest_path();
-    while(1)
-    {
-        
-    }
+	while(!nearest_path_driven)
+	{
+		drive_nearest_path();
+	}
+	while(!nearest_path_driven_back)
+	{
+		drive_back_nearest_path();
+	}
+    return 0;
 }
